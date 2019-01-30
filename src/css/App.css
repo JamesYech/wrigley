@@ -30,3 +30,55 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+.grid {
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+
+
+.header {
+  background: lightblue;
+}
+.footer {
+  background: lightblue;
+
+}
+
+.col-1 {
+  width: 25%;
+}
+
+.col-3 {
+  width: 75%;
+}
+
+
+
+.placesPanel {
+  background-color: #B5B1B1FF
+}
+
+.mapPanel {
+  height: 90vh;
+}
+
+/*.mapPanel {
+  flex: 1;
+  margin: auto;
+  width: 75%;
+  flex: 3;
+}*/
+
+/*.mapDiv {
+  flex: 3;
+  height: 100vh;
+  margin: auto;
+}*/
+
