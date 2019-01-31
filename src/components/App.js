@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import mapStyles from '../utils/mapStyle.js'
-// import GetMarkers from './markers.js'
+import GetMarkers from './markers.js'
 import '../css/App.css'
 import Map from './Map.js'
 
@@ -9,7 +9,9 @@ const center = {lat: 41.9484384, lng:-87.6575214}
 
 class App extends Component {
 
-
+	showMarkers=(map) => {
+		GetMarkers(map)
+	}
 
 	render() {
 		return (
@@ -31,6 +33,7 @@ class App extends Component {
 							styles: mapStyles.mapStyles,
 							mapTypeControl: false
 						}}
+						onMapLoad={GetMarkers}
 					/>
 				</div>
 
