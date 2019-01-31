@@ -9,9 +9,7 @@ const center = {lat: 41.9484384, lng:-87.6575214}
 
 class App extends Component {
 
-	showMarkers=(map) => {
-		GetMarkers(map)
-	}
+
 
 	render() {
 		return (

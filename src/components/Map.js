@@ -1,9 +1,11 @@
 
 import React, { Component } from 'react';
+import GetMarkers from './markers.js'
 // import mapStyles from '../utils/mapStyle.js'
 
 
 class Map extends Component {
+
 
 
 	constructor(props) {
@@ -18,6 +20,7 @@ class Map extends Component {
 				document.getElementById(this.props.id),
 				this.props.options
 			)
+
 		this.props.onMapLoad(map)
 	}
 
@@ -27,7 +30,7 @@ class Map extends Component {
 	componentDidMount() {
 		if (!window.google) {
 
-
+			const ApiKey = 'AIzaSyDnImGieQyxOm3Ywe48ygJGQXMHm2JkpCY'
 			const ApiLibraries =['places']
 			const script = document.createElement('script')
 			script.type = 'text/javascript'
@@ -51,7 +54,9 @@ class Map extends Component {
 
 	render() {
 		return (
+
 			<div id={this.props.id} className='col-3 mapPanel' />
+
 		)
 	}
 

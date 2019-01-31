@@ -3,50 +3,66 @@ import React from 'react';
 
 function GetMarkers(map) {
 
+const center = {lat: 41.947229, lng:-87.6586307}
 
- //  constructor(props) {
-	// super(props)
-	// //state = markers array and ...
- //  }
+// let testString = "InfoWindow is Here"
 
-	// componentDidMount() {
 
-	// 	let request = {
-	// 		location: this.center,
-	// 		radius: '500',
-	// 		type: 'bar'
-	// 	}
 
-	// 	let service = new window.google.maps.places.PlacesService(this.map)
-	// 	service.nearbySearch(request, placesReturned)
+let returnedPlaces = []
 
-	// 	function placesReturned(results, status) {
-	// 		if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-	// 			let returnedPlaces = []
-	// 			for (let i=0; i<results.length; i++) {
-	// 				returnedPlaces.push(results[i])
-	// 			}
-	// 			console.log(returnedPlaces)
-	// 		}else {
-	// 				console.log(status)
-	// 			}
-	// 	}
+	function markerClick(map,marker) {
+		let testString= '<h1>'+marker.title+'</h1>'+
+					'<p>Stuf....</p>'
+		console.log(testString)
+		console.log(marker)
+		console.log(map)
+		let infowindow = new window.google.maps.InfoWindow({
+	content: testString
+})
+		infowindow.open(map,marker)
+	}
 
-	// }
-const center = {lat: 41.9484384, lng:-87.6575214}
 	const aMarker = (map) => {
-			let marker = new window.google.maps.Marker({
-  			position: {lat: 41.9484384, lng:-87.6575214},
-  			map: map,
-  			title: 'A freakin marker'
-  		})
+
+		let request = {
+			location: center,
+			radius: '408',
+			type: 'restaurant'
+		}
+
+		let service = new window.google.maps.places.PlacesService(map)
+		service.nearbySearch(request, placesReturned)
+
+		function placesReturned(results, status) {
+			if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+				for (let i=0; i<results.length; i++) {
+					returnedPlaces.push(results[i])
+				}
+
+				returnedPlaces.forEach((rp) => {
+
+					let marker = new window.google.maps.Marker({
+			  			position: rp.geometry.location,
+			  			map: map,
+			  			title: rp.name
+			  		})
+			  		marker.addListener('click', function() {
+			  			markerClick(map,marker)
+			  		})
+				})
+
+
+
+			} else	{
+						console.log(status)
+					}
+		}
+
+
 	}
 
 
-
-
-  	// const { map} = this.props
-  	// console.log(map)
 
   	return(
   		<div>
@@ -57,6 +73,12 @@ const center = {lat: 41.9484384, lng:-87.6575214}
 
 
 }
-  export default GetMarkers
+
+export default GetMarkers
 
 
+		// let marker = new window.google.maps.Marker({
+  	// 		position: center,
+  	// 		map: map,
+  	// 		title: 'A freakin marker'
+  	// 	})
