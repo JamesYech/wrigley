@@ -27,7 +27,7 @@ class Map extends Component {
 	componentDidMount() {
 		if (!window.google) {
 
-			const ApiKey = 'AIzaSyDnImGieQyxOm3Ywe48ygJGQXMHm2JkpCY'
+
 			const ApiLibraries =['places']
 			const script = document.createElement('script')
 			script.type = 'text/javascript'
